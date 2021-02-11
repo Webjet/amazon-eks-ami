@@ -1,6 +1,6 @@
 {
   "variables": {
-    "aws_region": "us-west-2",
+    "aws_region": "eu-west-1",
     "ami_name": null,
     "creator": "{{env `USER`}}",
     "encrypted": "false",
@@ -9,7 +9,7 @@
     "aws_secret_access_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_session_token": "{{env `AWS_SESSION_TOKEN`}}",
     "binary_bucket_name": "amazon-eks",
-    "binary_bucket_region": "us-west-2",
+    "binary_bucket_region": "eu-west-1",
     "kubernetes_version": null,
     "kubernetes_build_date": null,
     "kernel_version": "",
@@ -162,6 +162,11 @@
       "type": "shell",
       "remote_folder": "{{ user `remote_folder`}}",
       "script": "{{template_dir}}/scripts/validate.sh"
+    },
+    {
+      "type": "file",
+      "source": "{{template_dir}}/files/80-webbeds.conf",
+      "destination": "/etc/sysctl.d"
     }
   ],
   "post-processors": [
